@@ -24,7 +24,7 @@ class Rack::CAS
       log env, 'rack-cas: Intercepting ticket validation request.'
 
       begin
-        user, extra_attrs = get_user(cas_request.serviceurl, cas_request.ticket)
+        user, extra_attrs = get_user(cas_request.service_url, cas_request.ticket)
       rescue RackCAS::ServiceValidationResponse::TicketInvalidError, RackCAS::SAMLValidationResponse::TicketInvalidError
         log env, 'rack-cas: Invalid ticket. Redirecting to CAS login.'
 
