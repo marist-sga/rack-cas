@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'log_buddy'
 
 class CASRequest
   def initialize(request)
@@ -15,11 +16,15 @@ class CASRequest
 
   def service_url
     url = RackCAS::URL.parse(@request.url).remove_param('ticket')
-
-    if RackCAS.config.sub_uri?
-      url.path = RackCAS.config.sub_uri + url.path
-    end
-
+    #
+    # d { url }
+    #
+    # if RackCAS.config.sub_uri?
+    url.path = '/rollcall' + url.path
+    # end
+    #
+    # d { url }
+    #
     url.to_s
   end
 

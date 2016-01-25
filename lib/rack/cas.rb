@@ -20,6 +20,14 @@ class Rack::CAS
       return @app.call(env)
     end
 
+    service_url = RackCAS::URL.parse(cas_request.service_url)
+
+    if RackCAS.config.sub_uri?
+      service_url.path = RackCAS.config.sub_uri + service_url.path
+    end
+
+    service_url = service_url.to_s
+
     if cas_request.ticket_validation?
       log env, 'rack-cas: Intercepting ticket validation request.'
 
