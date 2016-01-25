@@ -1,5 +1,4 @@
 require 'nokogiri'
-require 'log_buddy'
 
 class CASRequest
   def initialize(request)
