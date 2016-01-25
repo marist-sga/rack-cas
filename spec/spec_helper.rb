@@ -33,7 +33,7 @@ def cas_test_app(options = {})
 end
 
 def fake_cas_test_app
-  Rack::FakeCAS.new(CasTestApp.new, { sub_uri: '/rollcall' })
+  Rack::FakeCAS.new(CasTestApp.new)
 end
 
 def fixture(filename)

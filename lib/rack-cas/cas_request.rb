@@ -15,15 +15,11 @@ class CASRequest
 
   def service_url
     url = RackCAS::URL.parse(@request.url).remove_param('ticket')
-    #
-    # d { url }
-    #
-    # if RackCAS.config.sub_uri?
-    url.path = '/rollcall' + url.path
-    # end
-    #
-    # d { url }
-    #
+
+    if RackCAS.config.sub_uri?
+      url.path = '/rollcall' + url.path
+    end
+
     url.to_s
   end
 
