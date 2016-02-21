@@ -17,7 +17,7 @@ class CASRequest
     url = RackCAS::URL.parse(@request.url).remove_param('ticket')
 
     if RackCAS.config.sub_uri?
-      url.path = RackCAS.config.sub_uri? + url.path
+      url.path = RackCAS.config.sub_uri + url.path
     end
 
     url.to_s
